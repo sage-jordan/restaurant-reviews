@@ -1,11 +1,10 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AddReview from './components/add-review';
 import Login from './components/login';
 import RestaurantsList from './components/restaurants-list';
 import Restaurant from './components/restaurant';
-
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -32,9 +31,9 @@ function App() {
           </li>
           <li className="nav-item">
             {user ? (
-              <a onClick={logout} className="nav-link" style={{ cursor: 'pointer' }}>
+              <button onClick={logout} clbuttonssName="nav-link" style={{ cursor: 'pointer' }}>
                 Logout {user.name}
-              </a>
+              </button>
             ) : (
               <Link to={"/login"} className="nav-link">
                 Login
@@ -45,7 +44,7 @@ function App() {
       </nav>
 
       <div className="container mt-3">
-        <Switch>
+        <Routes>
           <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
           <Route exact path={["/", "/restaurants/:id/review"]} render={(props => (
             <AddReview {...props} user={user} />
@@ -56,7 +55,7 @@ function App() {
           <Route exact path={["/", "/login"]} render={(props => (
             <Login {...props} login={login} />
           ))} />
-        </Switch>
+        </Routes>
       </div>
     </div>
   );
