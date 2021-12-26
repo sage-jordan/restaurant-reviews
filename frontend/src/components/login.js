@@ -1,8 +1,8 @@
 import React from "react";
 
-function Login() {
+function Login(login) {
     return (
-        <div className="">
+        <div>
             Login
         </div>
     );
