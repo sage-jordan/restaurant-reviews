@@ -45,16 +45,10 @@ function App() {
 
       <div className="container mt-3">
         <Routes>
-          <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
-          <Route exact path={["/", "/restaurants/:id/review"]} render={(props => (
-            <AddReview {...props} user={user} />
-          ))} />
-          <Route exact path={["/", "/restaurants/:id"]} render={(props => (
-            <Restaurant {...props} user={user} />
-          ))} />
-          <Route exact path={["/", "/login"]} render={(props => (
-            <Login {...props} login={login} />
-          ))} />
+          <Route path="restaurants" element={<RestaurantsList />} />
+          <Route exact path="/restaurants/:id/review" element={<AddReview user={user} />} />
+          <Route exact path="/restaurants/:id" element={<Restaurant user={user} />} />
+          <Route exact path="/login" element={<Login login={login} />} />
         </Routes>
       </div>
     </div>
