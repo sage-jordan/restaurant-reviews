@@ -29,3 +29,5 @@ class RestaurantDataService {
         return http.get(`/cuisines`);
     }
 }
+
+export default new RestaurantDataService();
