@@ -20,12 +20,12 @@ function App() {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/restaurants" className="navbar-brand">
+        <a href="/" className="navbar-brand">
           Restaurant Reviews
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/restaurants"} className="nav-link">
+            <Link to={"/"} className="nav-link">
               Restaurants
             </Link>
           </li>
@@ -45,7 +45,7 @@ function App() {
 
       <div className="container mt-3">
         <Routes>
-          <Route path="restaurants" element={<RestaurantsList />} />
+          <Route index element={<RestaurantsList />} />
           <Route exact path="/restaurants/:id/review" element={<AddReview user={user} />} />
           <Route exact path="/restaurants/:id" element={<Restaurant user={user} />} />
           <Route exact path="/login" element={<Login login={login} />} />
