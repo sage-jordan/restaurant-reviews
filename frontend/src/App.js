@@ -11,10 +11,12 @@ function App() {
 
   async function login(user = null) {
     setUser(user);
+    console.log("User logged in. User: ", user)
   }
 
   async function logout() {
     setUser(null);
+    console.log("User logged out. User: ", null)
   }
 
   return (
@@ -25,17 +27,17 @@ function App() {
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/"} className="nav-link">
+            <Link to={"/"} className="btn nav-link">
               Restaurants
             </Link>
           </li>
           <li className="nav-item">
             {user ? (
-              <button onClick={logout} className="nav-link" style={{ cursor: 'pointer' }}>
-                Logout {user.name}
+              <button onClick={logout} className="btn nav-link" style={{ cursor: 'pointer' }}>
+                Logout | {user.name}
               </button>
             ) : (
-              <Link to={"/login"} className="nav-link">
+              <Link to={"/login"} className="btn nav-link">
                 Login
               </Link>
             )}
