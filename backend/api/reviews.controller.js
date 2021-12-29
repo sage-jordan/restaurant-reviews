@@ -76,6 +76,7 @@ export default class ReviewsController {
             const userId = req.query.user_id
             if (!reviewId || !userId) {
                 res.status(404).json({ status: "Please supply an id and user_id in the query string" })
+                return
             }
             const reviewResponse = await ReviewsDAO.deleteReview(
                 reviewId, userId
