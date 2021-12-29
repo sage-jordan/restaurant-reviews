@@ -5,6 +5,7 @@ import AddReview from './components/add-review';
 import Login from './components/login';
 import RestaurantsList from './components/restaurants-list';
 import Restaurant from './components/restaurant';
+import './App.css';
 
 function App() {
   const [user, setUser] = React.useState(null);
@@ -22,9 +23,9 @@ function App() {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/" className="navbar-brand">
+        <Link to={"/"} className="navbar-brand">
           Restaurant Reviews
-        </a>
+        </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link to={"/"} className="btn nav-link">
