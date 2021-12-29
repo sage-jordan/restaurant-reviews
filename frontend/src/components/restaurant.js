@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import RestaurantDataService from "../services/restaurant";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 
 const Restaurant = props => {
     let params = useParams();
+    let navigate = useNavigate();
     const initialRestaurantState = {
         id: null,
         name: "",
@@ -41,7 +42,6 @@ const Restaurant = props => {
                 console.log(e);
             });
     }
-    console.log(restaurant);
 
     return (
         <div>
@@ -52,7 +52,7 @@ const Restaurant = props => {
                         <strong>Cuisine: </strong>{restaurant.cuisine}<br></br>
                         <strong>Address: </strong>{restaurant.address.building} {restaurant.address.street}, {restaurant.address.zipcode}
                     </p>
-                    <Link to={"restaurants" + params.id + "/review"} className="btn btn-primary">
+                    <Link to={"/restaurants/" + params.id + "/review"} className="btn btn-primary">
                         Review
                     </Link>
                     <h4>Reviews</h4>
@@ -65,7 +65,7 @@ const Restaurant = props => {
                                         <div className="card">
                                             <div className="card-body">
                                                 <p className="card-text">
-                                                    {review.id}
+                                                    {review.text}
                                                 </p>
                                                 <p>
                                                     <strong>User: </strong>{review.name}<br></br>
@@ -76,15 +76,15 @@ const Restaurant = props => {
                                                         <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">
                                                             Delete
                                                         </a>
-                                                        <Link to={{
-                                                            pathname: "/restaurants/" + params.id
-                                                                + "/review",
-                                                            state: {
-                                                                currentReview: review
-                                                            }
-                                                        }} className="btn btn-primary col-lg-5 mx-1 mb-1">
+                                                        <button
+                                                            onClick={() =>
+                                                                navigate(
+                                                                    "/restaurants/" + params.id + "/review",
+                                                                    { state: { currentReview: restaurant.reviews[index] } }
+                                                                )}
+                                                            className="btn btn-primary col-lg-5 mx-1 mb-1">
                                                             Edit
-                                                        </Link>
+                                                        </button>
                                                     </div>
                                                 }
                                             </div>
